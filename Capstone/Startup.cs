@@ -39,6 +39,7 @@ namespace Capstone
                         ValidateLifetime = true
                     };
                 });
+            services.AddTransient<ITeamRepository, TeamRepository>();
             services.AddControllers();
         }
 
