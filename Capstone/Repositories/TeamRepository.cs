@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.Data.SqlClient;
+using System.Collections.Generic;
 using Microsoft.Extensions.Configuration;
 using Capstone.Models;
 using Capstone.Utils;
@@ -21,8 +19,8 @@ namespace Capstone.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                SELECT Id, [Name]
-                  FROM Team ";
+                          SELECT Id, Name 
+                            FROM Team";
 
                     var reader = cmd.ExecuteReader();
 
@@ -32,7 +30,7 @@ namespace Capstone.Repositories
                         teams.Add(new Team()
                         {
                             Id = DbUtils.GetInt(reader, "Id"),
-                            Name = DbUtils.GetString(reader, "Name")
+                            Name = DbUtils.GetString(reader, "Name"),
                         });
                     }
 
