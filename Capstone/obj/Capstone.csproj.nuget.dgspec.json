@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Jonrr\\workspace\\Capstone\\Capstone\\Capstone.csproj": {}
+    "C:\\Users\\Jonrr\\workspace\\Full-Stack-Capstone\\Capstone\\Capstone.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Jonrr\\workspace\\Capstone\\Capstone\\Capstone.csproj": {
+    "C:\\Users\\Jonrr\\workspace\\Full-Stack-Capstone\\Capstone\\Capstone.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Jonrr\\workspace\\Capstone\\Capstone\\Capstone.csproj",
+        "projectUniqueName": "C:\\Users\\Jonrr\\workspace\\Full-Stack-Capstone\\Capstone\\Capstone.csproj",
         "projectName": "Capstone",
-        "projectPath": "C:\\Users\\Jonrr\\workspace\\Capstone\\Capstone\\Capstone.csproj",
+        "projectPath": "C:\\Users\\Jonrr\\workspace\\Full-Stack-Capstone\\Capstone\\Capstone.csproj",
         "packagesPath": "C:\\Users\\Jonrr\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Jonrr\\workspace\\Capstone\\Capstone\\obj\\",
+        "outputPath": "C:\\Users\\Jonrr\\workspace\\Full-Stack-Capstone\\Capstone\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Jonrr\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -69,7 +69,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

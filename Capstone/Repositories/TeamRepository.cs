@@ -19,8 +19,9 @@ namespace Capstone.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                          SELECT Id, Name 
-                            FROM Team";
+                          SELECT Id, Name, Odds 
+                            FROM Team
+                            ORDER BY Odds ASC";
 
                     var reader = cmd.ExecuteReader();
 
@@ -31,6 +32,7 @@ namespace Capstone.Repositories
                         {
                             Id = DbUtils.GetInt(reader, "Id"),
                             Name = DbUtils.GetString(reader, "Name"),
+                            Odds = DbUtils.GetInt(reader, "Odds")
                         });
                     }
 

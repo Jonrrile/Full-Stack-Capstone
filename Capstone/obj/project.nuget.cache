@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "aLksJ8URZo3vsIamtN0AXS1v7R1xkl8mDP0ssvBf8oxO0vYB7PwTWeoNZTOs0bw0H1isX99ccBs4dDNa1hzO2g==",
+  "dgSpecHash": "jUDhlFrq/tjbOx9qad5kSdGrZr0w6+EHkqH3PKq9FUpB+uBdJoX+M/V60ZURedfBR6HtIl/lZyJvcgNR6Cr5yw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Jonrr\\workspace\\Capstone\\Capstone\\Capstone.csproj",
+  "projectFilePath": "C:\\Users\\Jonrr\\workspace\\Full-Stack-Capstone\\Capstone\\Capstone.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Jonrr\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.9\\microsoft.aspnetcore.authentication.jwtbearer.3.1.9.nupkg.sha512",
     "C:\\Users\\Jonrr\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",

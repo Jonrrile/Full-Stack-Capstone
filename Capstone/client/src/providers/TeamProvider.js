@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 export const TeamContext = React.createContext();
 
 export const TeamProvider = (props) => {

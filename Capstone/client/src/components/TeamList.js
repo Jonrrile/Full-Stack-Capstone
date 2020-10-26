@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { TeamContext } from "../providers/TeamProvider";
-
+import { Button, ListGroup, ListGroupItem } from 'react-bootstrap';
 const TeamList = () => {
   const { teams, getAllTeams } = useContext(TeamContext);
 
@@ -9,15 +9,18 @@ const TeamList = () => {
   }, []);
 
   return (
-    <div>
+    <ListGroup>
       {teams.map((team) => (
-        <div key={team.id}>
-          <p>
-            <strong>{team.name}</strong>
-          </p>
-        </div>
+        <ListGroup key={team.id}>
+          <ListGroup.Item>{team.name} <br />
+            <Button variant="light">+{team.odds}
+              {/* <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              </input> */}
+            </Button></ListGroup.Item>
+
+        </ListGroup>
       ))}
-    </div>
+    </ListGroup>
   );
 };
 
