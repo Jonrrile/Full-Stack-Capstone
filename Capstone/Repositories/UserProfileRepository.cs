@@ -19,6 +19,7 @@ namespace Capstone.Repositories
                         SELECT Id, FirebaseUserId, Name, Email
                           FROM UserProfile";
 
+                    DbUtils.AddParameter(cmd, "@FirebaseUserId", firebaseUserId);
                
 
                     UserProfile userProfile = null;
@@ -30,7 +31,7 @@ namespace Capstone.Repositories
                         {
                             Id = DbUtils.GetInt(reader, "Id"),
                             FirebaseUserId = DbUtils.GetString(reader, "FirebaseUserId"),
-                            Name = DbUtils.GetString(reader, "UserProfileName"),
+                            Name = DbUtils.GetString(reader, "Name"),
                             Email = DbUtils.GetString(reader, "Email"),
 
                         };

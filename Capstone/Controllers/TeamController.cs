@@ -8,18 +8,21 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Capstone.Controllers
 {
-   
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class TeamController : ControllerBase
     {
         private readonly ITeamRepository _teamRepository;
+        private readonly IUserProfileRepository _userProfileRepository;
      
         public TeamController(
-            ITeamRepository teamRepository)
+            ITeamRepository teamRepository,
+            IUserProfileRepository userProfileRepository)
       
         {
             _teamRepository = teamRepository;
+            _userProfileRepository = userProfileRepository;
  
         }
 

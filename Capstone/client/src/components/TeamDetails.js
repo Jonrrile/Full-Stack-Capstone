@@ -3,6 +3,7 @@ import { Button, ListGroup, ListGroupItem } from "reactstrap";
 import { TeamContext } from "../providers/TeamProvider";
 import { useParams } from "react-router-dom";
 import Team from "./Team";
+import { Link } from "react-router-dom";
 
 const TeamDetails = () => {
     const [team, setTeam] = useState();
@@ -22,12 +23,12 @@ const TeamDetails = () => {
             <div className="row justify-content-center">
                 <div className="col-sm-12 col-lg-6">
                     <Team key={team.id} team={team} />
-                    <input type="text" value="To Wager:">
-                    </input>
-                    <input type="text" value="To Win:">
-                    </input>
-                    <br />
-                    <Button variant="light">Add to Ticket</Button>
+                    <Link to={`/betsbyteam/${id}`}><Button variant="light">
+                        View Bets
+                    </Button></Link>
+                    <Link to=""><Button variant="light">
+                        Place Bet
+                    </Button></Link>
                 </div>
             </div>
         </div >

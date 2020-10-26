@@ -12,6 +12,7 @@ const TeamList = () => {
 
   return (
     <div>
+      <h2>Odds to win the SuperBowl as of 10/24/2020</h2>
       {teams.map((team) => (
         <Team key={team.id} team={team} />
       ))}
