@@ -9,5 +9,6 @@ namespace Capstone.Repositories
     public interface ITeamRepository
     {
         List<Team> GetAll();
+        Team GetById(int id);
     }
 }

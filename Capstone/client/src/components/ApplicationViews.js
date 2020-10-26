@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import TeamList from "./TeamList";
 import Home from "./Home";
 import Login from "./Login";
+import TeamDetails from "./TeamDetails";
 // import { UserProfileContext } from "../providers/UserProfileProvider";
 
 export default function ApplicationViews() {
@@ -28,13 +29,14 @@ export default function ApplicationViews() {
       <Route path="/" exact>
         <Home />
       </Route>
-
       <Route path="/teams">
         <TeamList />
       </Route>
-
       <Route path="/login">
         <Login />
+      </Route>
+      <Route path="/team/:id">
+        <TeamDetails />
       </Route>
     </Switch>
   );

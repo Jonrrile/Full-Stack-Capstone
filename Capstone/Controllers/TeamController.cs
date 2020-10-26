@@ -28,5 +28,16 @@ namespace Capstone.Controllers
         {
             return Ok(_teamRepository.GetAll());
         }
+
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            var team = _teamRepository.GetById(id);
+            if (team == null)
+            {
+                return NotFound();
+            }
+            return Ok(team);
+        }
     }
 }

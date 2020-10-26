@@ -10,8 +10,18 @@ export const TeamProvider = (props) => {
       .then(setTeams);
   };
 
+  const getTeam = (id) => {
+    return fetch(`/api/team/${id}`)
+      .then((res) => res.json());
+  };
+
+  const getTeamData = () => {
+    return fetch("https://api.the-odds-api.com/v3/sports?apiKey=e41356749169d3c9782c88e9aecc16b3")
+      .then((res) => res.json());
+  };
+
   return (
-    <TeamContext.Provider value={{ teams, getAllTeams }}>
+    <TeamContext.Provider value={{ teams, getAllTeams, getTeam, getTeamData }}>
       {props.children}
     </TeamContext.Provider>
   );
