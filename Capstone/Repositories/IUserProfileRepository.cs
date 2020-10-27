@@ -10,5 +10,6 @@ namespace Capstone.Repositories
     {
         UserProfile GetByFirebaseUserId(string firebaseUserId);
         void Add(UserProfile userProfile);
+        
     }
 }

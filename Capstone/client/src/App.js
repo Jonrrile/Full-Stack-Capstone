@@ -5,6 +5,7 @@ import ApplicationViews from "./components/ApplicationViews";
 import { TeamProvider } from "./providers/TeamProvider";
 import Header from "./components/Header";
 import { UserProfileProvider } from "./providers/UserProfileProvider";
+import { BetProvider } from "./providers/BetProvider";
 
 function App() {
   return (
@@ -12,8 +13,10 @@ function App() {
       <Router>
         <UserProfileProvider>
           <TeamProvider>
-            <Header />
-            <ApplicationViews />
+            <BetProvider>
+              <Header />
+              <ApplicationViews />
+            </BetProvider>
           </TeamProvider>
         </UserProfileProvider>
       </Router>

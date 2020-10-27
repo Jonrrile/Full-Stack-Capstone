@@ -12,7 +12,6 @@ namespace Capstone.Models
         public int TeamId { get; set; }
         public int UserProfileId { get; set; }
         public int ToBetAmount { get; set; }
-        public int ToWinAmount { get; set; }
         public Team Team { get; set; }
         public UserProfile UserProfile { get; set; }
     }

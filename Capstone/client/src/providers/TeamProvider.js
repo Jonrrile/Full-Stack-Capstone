@@ -27,7 +27,20 @@ export const TeamProvider = (props) => {
           Authorization: `Bearer ${token}`
         }
       }).then(resp => resp.json())
-    )
+    );
+
+  const editTeam = (team) => {
+    return getToken().then((token) => {
+      fetch(`/api/team/${team.id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+          //Having a problem here. 
+        },
+      })
+    })
+  }
 
 
 
@@ -37,7 +50,7 @@ export const TeamProvider = (props) => {
   // };
 
   return (
-    <TeamContext.Provider value={{ teams, getAllTeams, getTeam }}>
+    <TeamContext.Provider value={{ teams, getAllTeams, getTeam, editTeam }}>
       {props.children}
     </TeamContext.Provider>
   );

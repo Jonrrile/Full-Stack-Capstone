@@ -7,9 +7,9 @@ import { Link, useParams } from "react-router-dom";
 
 const BetList = () => {
     const { bets, getAllBetsForTeam } = useContext(BetContext);
-    const { getTeam } = useContext(TeamContext);
+    const { team, getTeam } = useContext(TeamContext);
     const { id } = useParams();
-    //const { teamId } = useParams();
+    const { teamId } = useParams();
 
     useEffect(() => {
         getAllBetsForTeam(id);
@@ -31,8 +31,6 @@ const BetList = () => {
                                         <CardBody>
                                             <CardTitle><strong>Bet Amount:</strong></CardTitle>
                                             <CardText>{bet.toBetAmount}</CardText>
-                                            <CardTitle><strong>Win Amount:</strong></CardTitle>
-                                            <CardText>{bet.toWinAmount}</CardText>
                                         </CardBody>
                                     </Card>
                                 )

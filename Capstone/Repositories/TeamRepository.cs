@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using Microsoft.Extensions.Configuration;
 using Capstone.Models;
 using Capstone.Utils;
+using Microsoft.Data.SqlClient;
+using Microsoft.AspNetCore.Routing.Template;
 
 namespace Capstone.Repositories
 {
@@ -77,6 +79,34 @@ namespace Capstone.Repositories
                     reader.Close();
 
                     return team;
+                }
+            }
+        }
+
+        public void UpdateTeamOdds (Team team)
+        {
+            using (SqlConnection conn = Connection)
+            {
+                conn.Open();
+
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        UPDATE Team
+                        SET
+                        Name = @name,
+                        Odds = @odds,
+                        ImageLocation = @imageLocation,
+                        Fact = @fact
+                       WHERE Id = @id";
+
+                    cmd.Parameters.AddWithValue("@name", team.Name);
+                    cmd.Parameters.AddWithValue("@odds", team.Odds);
+                    cmd.Parameters.AddWithValue("@imageLocation", team.ImageLocation);
+                    cmd.Parameters.AddWithValue("@fact", team.Fact);
+                    cmd.Parameters.AddWithValue("@id", team.Id);
+
+                    cmd.ExecuteNonQuery();
                 }
             }
         }

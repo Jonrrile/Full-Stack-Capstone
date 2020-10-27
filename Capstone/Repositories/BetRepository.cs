@@ -20,7 +20,7 @@ namespace Capstone.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        SELECT b.Id, b.TeamId, b.UserProfileId, b.ToBetAmount, b.ToWinAmount
+                        SELECT b.Id, b.TeamId, b.UserProfileId, b.ToBetAmount, u.Name
                         FROM Bet b
                         JOIN Team t
                         ON b.TeamId = t.Id
@@ -40,7 +40,6 @@ namespace Capstone.Repositories
                             Id = reader.GetInt32(reader.GetOrdinal("Id")),
                             TeamId = reader.GetInt32(reader.GetOrdinal("TeamId")),
                             UserProfileId = reader.GetInt32(reader.GetOrdinal("UserProfileId")),
-                            ToWinAmount = reader.GetInt32(reader.GetOrdinal("ToWinAmount")),
                             ToBetAmount = reader.GetInt32(reader.GetOrdinal("ToBetAmount")),
                             Team = new Team
                             {
@@ -49,7 +48,8 @@ namespace Capstone.Repositories
                             },
                             UserProfile = new UserProfile
                             {
-                                Id = reader.GetInt32(reader.GetOrdinal("UserProfileId"))
+                                Id = reader.GetInt32(reader.GetOrdinal("UserProfileId")),
+                                Name = reader.GetString(reader.GetOrdinal("Name"))
                             }
                         };
 
