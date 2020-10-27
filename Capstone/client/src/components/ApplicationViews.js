@@ -8,6 +8,7 @@ import BetList from "./BetList";
 import Register from "./Register";
 
 import { UserProfileContext } from "../providers/UserProfileProvider";
+import EditTeam from "./EditTeamOdds";
 
 export default function ApplicationViews() {
   const { isLoggedIn } = useContext(UserProfileContext);
@@ -35,17 +36,20 @@ export default function ApplicationViews() {
       <Route path="/teams">
         {isLoggedIn ? <TeamList /> : <Redirect to="/login" />}
       </Route>
-      <Route path="/login">
-        <Login />
-      </Route>
-      <Route path="/register">
-        <Register />
+      <Route path="/team/edit/:id" exact>
+        <EditTeam />
       </Route>
       <Route path="/team/:id">
         {isLoggedIn ? <TeamDetails /> : <Redirect to="/login" />}
       </Route>
       <Route path="/betsbyteam/:id" exact>
         {isLoggedIn ? <BetList /> : <Redirect to="/login" />}
+      </Route>
+      <Route path="/login">
+        <Login />
+      </Route>
+      <Route path="/register">
+        <Register />
       </Route>
     </Switch>
   );

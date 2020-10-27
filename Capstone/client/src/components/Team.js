@@ -18,7 +18,7 @@ const Team = ({ team }) => {
                         </Link>
                     </Button>
                     <Button variant="light">
-                        <Link to="">
+                        <Link to={`/team/edit/${team.id}`}>
                             Adjust Odds
                         </Link>
                     </Button>

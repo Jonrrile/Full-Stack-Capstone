@@ -10,5 +10,6 @@ namespace Capstone.Repositories
     {
         List<Team> GetAll();
         Team GetById(int id);
+        void UpdateTeamOdds(Team team);
     }
 }
