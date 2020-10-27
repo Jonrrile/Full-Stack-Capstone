@@ -16,10 +16,14 @@ namespace Tabloid.Controllers
     public class BetController : ControllerBase
     {
         private readonly IBetRepository _betRepository;
+        private readonly IUserProfileRepository _userProfileRepository;
 
-        public BetController(IBetRepository betRepository)
+        public BetController(
+            IBetRepository betRepository,
+            IUserProfileRepository userProfileRepository)
         {
             _betRepository = betRepository;
+            _userProfileRepository = userProfileRepository;
         }
 
 

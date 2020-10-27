@@ -4,10 +4,12 @@ import TeamList from "./TeamList";
 import Home from "./Home";
 import Login from "./Login";
 import TeamDetails from "./TeamDetails";
-// import { UserProfileContext } from "../providers/UserProfileProvider";
+import BetList from "./BetList";
+
+import { UserProfileContext } from "../providers/UserProfileProvider";
 
 export default function ApplicationViews() {
-  // const { isLoggedIn } = useContext(UserProfileContext);
+  const { isLoggedIn } = useContext(UserProfileContext);
 
   // let teamCollection = []
 
@@ -30,13 +32,16 @@ export default function ApplicationViews() {
         <Home />
       </Route>
       <Route path="/teams">
-        <TeamList />
+        {isLoggedIn ? <TeamList /> : <Redirect to="/login" />}
       </Route>
       <Route path="/login">
         <Login />
       </Route>
       <Route path="/team/:id">
-        <TeamDetails />
+        {isLoggedIn ? <TeamDetails /> : <Redirect to="/login" />}
+      </Route>
+      <Route path="/betsbyteam/:id" exact>
+        {isLoggedIn ? <BetList /> : <Redirect to="/login" />}
       </Route>
     </Switch>
   );
