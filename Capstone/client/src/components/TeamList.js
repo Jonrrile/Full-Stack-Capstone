@@ -12,7 +12,8 @@ const TeamList = () => {
 
   return (
     <Container>
-      <h2>Odds to win the SuperBowl as of 10/24/2020</h2>
+      <h2>Odds to win the SuperBowl as of 10/27/2020</h2>
+      <h6>Simply click on 'Adjust Odds' if you want to adjust or change odds for your favorite team!</h6>
       {teams.map((team) => (
         <Team key={team.id} team={team} />
       ))}
