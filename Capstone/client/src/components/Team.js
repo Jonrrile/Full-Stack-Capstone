@@ -1,20 +1,26 @@
 import React from "react";
-import { Button, ListGroup, ListGroupItem } from 'react-bootstrap';
+import {
+    Button, ListGroup, ListGroupItem,
+    Card, CardGroup, CardDeck, CardColumns
+} from 'react-bootstrap';
 import { Link } from "react-router-dom";
 
 const Team = ({ team }) => {
     return (
-        <ListGroup>
-            <ListGroup.Item>{team.name} <br />
-                <Button variant="light">
-                    <Link to={`/team/${team.id}`}>
-                        +{team.odds}
-                    </Link>
-                    {/* <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            </input> */}
-                </Button>
-            </ListGroup.Item>
-        </ListGroup>
+        <CardColumns>
+            <Card style={{ width: '18rem' }}>
+                <Card.Img variant="top" src={team.imageLocation} />
+                <Card.Body>
+                    <Card.Title>{team.name}</Card.Title>
+                    <Button variant="light">
+                        <Link to={`/team/${team.id}`}>
+                            +{team.odds}
+                        </Link>
+                    </Button>
+                </Card.Body>
+            </Card>
+        </CardColumns>
+
 
     );
 }

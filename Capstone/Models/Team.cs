@@ -12,5 +12,9 @@ namespace Capstone.Models
         public string Name { get; set; }
         
         public int Odds { get; set; }
+
+        [Url]
+        public string ImageLocation { get; set; }
+        public string Fact { get; set; }
     }
 }

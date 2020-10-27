@@ -19,7 +19,7 @@ namespace Capstone.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                          SELECT Id, Name, Odds 
+                          SELECT Id, Name, Odds, ImageLocation, Fact 
                             FROM Team
                             ORDER BY Odds ASC";
 
@@ -32,7 +32,9 @@ namespace Capstone.Repositories
                         {
                             Id = DbUtils.GetInt(reader, "Id"),
                             Name = DbUtils.GetString(reader, "Name"),
-                            Odds = DbUtils.GetInt(reader, "Odds")
+                            Odds = DbUtils.GetInt(reader, "Odds"),
+                            ImageLocation = DbUtils.GetString(reader, "ImageLocation"),
+                            Fact = DbUtils.GetString(reader, "Fact")
                         });
                     }
 
@@ -51,7 +53,7 @@ namespace Capstone.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        SELECT Name, Odds
+                        SELECT Name, Odds, ImageLocation, Fact
                         FROM Team
                         WHERE Id = @Id";
 
@@ -66,7 +68,9 @@ namespace Capstone.Repositories
                         {
                             Id = id,
                             Name = DbUtils.GetString(reader, "Name"),
-                            Odds = DbUtils.GetInt(reader, "Odds")
+                            Odds = DbUtils.GetInt(reader, "Odds"),
+                            ImageLocation = DbUtils.GetString(reader, "ImageLocation"),
+                            Fact = DbUtils.GetString(reader, "Fact")
                         };
                     }
 
