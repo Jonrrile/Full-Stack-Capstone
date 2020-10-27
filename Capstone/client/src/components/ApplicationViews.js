@@ -5,6 +5,7 @@ import Home from "./Home";
 import Login from "./Login";
 import TeamDetails from "./TeamDetails";
 import BetList from "./BetList";
+import Register from "./Register";
 
 import { UserProfileContext } from "../providers/UserProfileProvider";
 
@@ -36,6 +37,9 @@ export default function ApplicationViews() {
       </Route>
       <Route path="/login">
         <Login />
+      </Route>
+      <Route path="/register">
+        <Register />
       </Route>
       <Route path="/team/:id">
         {isLoggedIn ? <TeamDetails /> : <Redirect to="/login" />}

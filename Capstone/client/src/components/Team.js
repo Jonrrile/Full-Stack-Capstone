@@ -17,6 +17,11 @@ const Team = ({ team }) => {
                             +{team.odds}
                         </Link>
                     </Button>
+                    <Button variant="light">
+                        <Link to="">
+                            Adjust Odds
+                        </Link>
+                    </Button>
                 </Card.Body>
             </Card>
         </CardColumns>

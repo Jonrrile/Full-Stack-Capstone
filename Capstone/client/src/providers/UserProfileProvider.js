@@ -27,6 +27,23 @@ export function UserProfileProvider(props) {
             });
     };
 
+    const logout = () => {
+        return firebase.auth().signOut()
+            .then(() => {
+                sessionStorage.clear()
+                setIsLoggedIn(false);
+            });
+    };
+
+    const register = (userProfile, password) => {
+        return firebase.auth().createUserWithEmailAndPassword(userProfile.email, password)
+            .then((createResponse) => saveUser({ ...userProfile, firebaseUserId: createResponse.user.uid }))
+            .then((savedUserProfile) => {
+                sessionStorage.setItem("userProfile", JSON.stringify(savedUserProfile))
+                setIsLoggedIn(true);
+            });
+    };
+
 
     const getToken = () => firebase.auth().currentUser.getIdToken();
 
@@ -40,8 +57,20 @@ export function UserProfileProvider(props) {
             }).then(resp => resp.json()));
     };
 
+    const saveUser = (userProfile) => {
+        return getToken().then((token) =>
+            fetch(apiUrl, {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(userProfile)
+            }).then(resp => resp.json()));
+    };
+
     return (
-        <UserProfileContext.Provider value={{ isLoggedIn, login, getToken }}>
+        <UserProfileContext.Provider value={{ isLoggedIn, login, logout, register, getToken }}>
             {isFirebaseReady
                 ? props.children
                 : <Spinner className="app-spinner dark" />}
