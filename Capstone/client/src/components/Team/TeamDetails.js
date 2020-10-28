@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import Team from "./Team";
 import { Link } from "react-router-dom";
 import {
-    Button, ListGroup, ListGroupItem,
+    Button, Image, ListGroupItem,
     Card, Container, CardGroup, CardDeck, CardColumns
 } from 'react-bootstrap';
 
@@ -23,26 +23,22 @@ const TeamDetails = () => {
 
     return (
         <Container>
-            <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={team.imageLocation} />
-                <Card.Body>
-                    <Card.Title>
-                        {team.name}
-                    </Card.Title>
-                    <Card.Text>
-                        +{team.odds}
-                    </Card.Text>
-                    <Card.Text>
-                        {team.fact}
-                    </Card.Text>
-                    <Link to={`/betsbyteam/${id}`}><Button variant="light">
-                        View Bets
+            <Image src={team.imageLocation} rounded />
+            <h2>
+                {team.name}
+            </h2>
+            <h2>
+                +{team.odds}
+            </h2>
+            <p>
+                {team.fact}
+            </p>
+            <Link to={`/betsbyteam/${id}`}><Button variant="light">
+                View Bets
                     </Button></Link>
-                    <Link to={`/bet/add/${id}`}><Button variant="light">
-                        Place Bet
+            <Link to={`/bet/add/${id}`}><Button variant="light">
+                Place Bet
                     </Button></Link>
-                </Card.Body>
-            </Card>
         </Container >
     );
 };
