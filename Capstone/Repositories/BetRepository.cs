@@ -62,7 +62,7 @@ namespace Capstone.Repositories
                 }
             }
         }
-        public void PlaceBet (Bet bet)
+        public void PlaceBet(Bet bet)
         {
             using (var conn = Connection)
             {
