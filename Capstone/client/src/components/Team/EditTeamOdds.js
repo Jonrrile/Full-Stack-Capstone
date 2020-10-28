@@ -20,10 +20,17 @@ const EditTeam = () => {
         stateToChange[e.target.id] = e.target.value;
         setUpdatedTeam(stateToChange)
     }
-
+    //team to save copy from updated team with new object
     const editATeam = (e) => {
+        const teamToSave = {
+            id: parseInt(id),
+            name: updatedTeam.name,
+            odds: parseInt(updatedTeam.odds),
+            imageLocation: updatedTeam.imageLocation,
+            fact: updatedTeam.fact
+        };
         setIsLoading(true);
-        editTeam(updatedTeam);
+        editTeam(teamToSave);
         setIsLoading(false);
         history.goBack();
     }
@@ -31,8 +38,8 @@ const EditTeam = () => {
     return (
         <>
             <Form>
-                <h3> Adjust a Team's Odds </h3>
-                <FormGroup>
+                <h3> Adjust {updatedTeam.name}' Odds </h3>
+                {/* <FormGroup>
                     <img src={updatedTeam.imageLocation}></img>
                     <br />
                     <Label htmlFor="subject"><strong>Team</strong></Label>
@@ -43,17 +50,29 @@ const EditTeam = () => {
                         name="subject"
                         id="subject"
                     />
-                </FormGroup>
+                </FormGroup> */}
                 <FormGroup>
-                    <Label htmlFor="content"><strong>Odds</strong></Label>
+                    <Label htmlFor="odds"><strong>Current Odds</strong></Label>
                     <Input className="p-2 bd-highlight justify-content-center"
                         defaultValue={updatedTeam.odds}
                         onChange={handleEditFieldChange}
                         type="number"
-                        name="content"
-                        id="content"
+                        name="odds"
+                        id="odds"
                     />
                 </FormGroup>
+                {/* <FormGroup>
+                    <Input
+                        defaultValue={updatedTeam.fact}
+                        onChange={handleEditFieldChange}
+                        type="textarea" />
+                </FormGroup>
+                <FormGroup>
+                    <Input
+                        defaultValue={updatedTeam.imageLocation}
+                        onChange={handleEditFieldChange}
+                        type="text" />
+                </FormGroup> */}
             </Form >
             <Button block className="editTeam" type="button" color="success" isLoading={isLoading}
                 onClick={editATeam}>

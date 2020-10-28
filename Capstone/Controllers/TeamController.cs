@@ -42,5 +42,15 @@ namespace Capstone.Controllers
             }
             return Ok(team);
         }
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, Team team)
+        {
+            if (id != team.Id)
+            {
+                return BadRequest();
+            }
+            _teamRepository.UpdateTeamOdds(team);
+            return NoContent();
+        }
     }
 }

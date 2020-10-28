@@ -38,6 +38,7 @@ export const TeamProvider = (props) => {
           Authorization: `Bearer ${token}`
           //Having a problem here. 
         },
+        body: JSON.stringify(team)
       })
     })
   }
