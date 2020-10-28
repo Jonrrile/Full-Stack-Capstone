@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Capstone.Models;
 using Capstone.Utils;
+using Newtonsoft.Json.Linq;
 
 namespace Capstone.Repositories
 {
@@ -58,6 +59,105 @@ namespace Capstone.Repositories
 
                     reader.Close();
                     return bets;
+                }
+            }
+        }
+        public void PlaceBet (Bet bet)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"INSERT INTO Bet (TeamId, UserProfileId, ToBetAmount)
+                                        OUTPUT INSERTED.ID
+                                        VALUES (@teamId, @userProfileId, @toBetAmount)";
+                    cmd.Parameters.AddWithValue("@teamId", bet.TeamId);
+                    cmd.Parameters.AddWithValue("@userProfileId", bet.UserProfileId);
+                    cmd.Parameters.AddWithValue("@toBetAmount", bet.ToBetAmount);
+                    int id = (int)cmd.ExecuteScalar();
+
+                    bet.Id = id;
+                }
+            }
+        }
+
+        public Bet GetBetById(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                    SELECT b.Id, b.TeamId, b.UserProfileId, b.ToBetAmount 
+                        FROM Bet b
+    
+                        WHERE b.Id = @id";
+
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    var reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        Bet bet = new Bet
+                        {
+                            Id = reader.GetInt32(reader.GetOrdinal("Id")),
+                            TeamId = reader.GetInt32(reader.GetOrdinal("TeamId")),
+                            UserProfileId = reader.GetInt32(reader.GetOrdinal("UserProfileId")),
+                            ToBetAmount = reader.GetInt32(reader.GetOrdinal("ToBetAmount")),
+                        };
+
+                        reader.Close();
+                        return bet;
+                    }
+                    else
+                    {
+                        reader.Close();
+                        return null;
+                    }
+                }
+            }
+        }
+
+        public void DeleteBet(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                            DELETE FROM Bet
+                            WHERE Id = @id";
+
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void UpdateBet(Bet bet)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        UPDATE Bet
+                        SET
+                            UserProfileId = @userProfileId,
+                            ToBetAmount - @toBetAmount
+                        WHERE Id = @id";
+
+                    cmd.Parameters.AddWithValue("@userProfileId", bet.UserProfileId);
+                    cmd.Parameters.AddWithValue("@toBetAmount", bet.ToBetAmount);
+                    cmd.Parameters.AddWithValue("@id", bet.Id);
+
+                    cmd.ExecuteNonQuery();
                 }
             }
         }

@@ -10,5 +10,9 @@ namespace Capstone.Repositories
     public interface IBetRepository
     {
         List<Bet> GetAllBetsByTeamId(int id);
+        void PlaceBet(Bet bet);
+        Bet GetBetById(int id);
+        void DeleteBet(int id);
+        void UpdateBet(Bet bet);
     }
 }

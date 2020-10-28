@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import { TeamContext } from "../providers/TeamProvider";
+import { TeamContext } from "../../providers/TeamProvider";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 
 const EditTeam = () => {

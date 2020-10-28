@@ -19,10 +19,57 @@ export const BetProvider = (props) => {
         })
     };
 
+    const placeBet = (newBet) => {
+        return getToken().then((token) => {
+            fetch("/api/bet/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify(newBet)
+            })
+        })
+    };
+
+    const getBetById = (betId) => {
+        return getToken().then((token) =>
+            fetch(`/api/bet/${betId}`, {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }).then(resp => resp.json()))
+    };
+
+    const deleteBet = (betId) => {
+        return getToken().then((token) => {
+            fetch(`/api/bet/${betId}`, {
+                method: "DELETE",
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+        })
+    }
+
+    const editBet = (bet) => {
+        return getToken().then((token) => {
+            fetch(`/api/bet/${bet.id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify(bet)
+            })
+        })
+    }
 
     return (
         <BetContext.Provider value={{
-            bets, getAllBetsForTeam
+            bets, getAllBetsForTeam, placeBet, getBetById,
+            deleteBet, editBet
         }}>
             {props.children}
         </BetContext.Provider>
