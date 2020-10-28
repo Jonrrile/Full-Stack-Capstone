@@ -12,7 +12,7 @@ const PlaceBet = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [newBet, setNewBet] = useState({
         teamId: parseInt(id),
-        userProfileId: 2,
+        userProfileId: 1,
         toBetAmount: 500
     })
     //Above is where the problem for add is. Hardcoding for now.
