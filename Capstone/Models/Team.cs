@@ -16,5 +16,6 @@ namespace Capstone.Models
         [Url]
         public string ImageLocation { get; set; }
         public string Fact { get; set; }
+        public List<Bet> Bets { get; set; }
     }
 }

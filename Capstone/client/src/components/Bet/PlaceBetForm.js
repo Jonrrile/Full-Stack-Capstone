@@ -13,9 +13,9 @@ const PlaceBet = () => {
     const [newBet, setNewBet] = useState({
         teamId: parseInt(id),
         userProfileId: 2,
-        toBetAmount: ""
+        toBetAmount: 500
     })
-
+    //Above is where the problem for add is. Hardcoding for now.
     const handleFieldChange = (e) => {
         const stateToChange = { ...newBet };
         stateToChange[e.target.id] = e.target.value;
