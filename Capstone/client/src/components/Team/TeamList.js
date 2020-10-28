@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { TeamContext } from "../providers/TeamProvider";
+import { TeamContext } from "../../providers/TeamProvider";
 import { Button, ListGroup, ListGroupItem, Container } from 'react-bootstrap';
 import Team from "./Team";
 

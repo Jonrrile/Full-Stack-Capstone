@@ -32,5 +32,44 @@ namespace Tabloid.Controllers
         {
             return Ok(_betRepository.GetAllBetsByTeamId(id));
         }
+        [HttpPost]
+        public IActionResult Post(Bet bet)
+        {
+            _betRepository.PlaceBet(bet);
+            return CreatedAtAction("Get", new { id = bet.Id }, bet);
+        }
+
+
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+
+            Bet bet = _betRepository.GetBetById(id);
+            if (bet == null)
+            {
+                return NotFound();
+            }
+            return Ok(bet);
+
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _betRepository.DeleteBet(id);
+            return NoContent();
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, Bet bet)
+        {
+            if (id != bet.Id)
+            {
+                return BadRequest();
+            }
+            _betRepository.UpdateBet(bet);
+            return NoContent();
+        }
+
     }
 }

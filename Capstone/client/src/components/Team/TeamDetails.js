@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from "react";
-import { TeamContext } from "../providers/TeamProvider";
+import { TeamContext } from "../../providers/TeamProvider";
 import { useParams } from "react-router-dom";
 import Team from "./Team";
 import { Link } from "react-router-dom";
@@ -30,12 +30,15 @@ const TeamDetails = () => {
                         {team.name}
                     </Card.Title>
                     <Card.Text>
+                        +{team.odds}
+                    </Card.Text>
+                    <Card.Text>
                         {team.fact}
                     </Card.Text>
                     <Link to={`/betsbyteam/${id}`}><Button variant="light">
                         View Bets
                     </Button></Link>
-                    <Link to=""><Button variant="light">
+                    <Link to={`/bet/add/${id}`}><Button variant="light">
                         Place Bet
                     </Button></Link>
                 </Card.Body>
