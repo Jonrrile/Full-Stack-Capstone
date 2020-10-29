@@ -7,6 +7,7 @@ import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 const EditBet = () => {
     const { id } = useParams(); //Url parameters for commentId
     const history = useHistory();
+    const { teamId } = useParams();
     const { editBet, getBetById } = useContext(BetContext); //Pulling from Context
     const [isLoading, setIsLoading] = useState(false);
     const [updatedBet, setUpdatedBet] = useState({}) //Setting new comment after updated
@@ -22,8 +23,13 @@ const EditBet = () => {
     }
 
     const editABet = (e) => {
+        const betToEdit = {
+            id: parseInt(id),
+            toBetAmount: parseInt(updatedBet.toBetAmount),
+            teamId: parseInt(id)
+        }
         setIsLoading(true);
-        editBet(updatedBet);
+        editBet(betToEdit);
         setIsLoading(false);
         history.goBack();
     }

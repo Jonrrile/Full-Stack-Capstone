@@ -42,7 +42,7 @@ export default function ApplicationViews() {
       <Route path="/bet/delete/:id" exact>
         {isLoggedIn ? <DeleteBet /> : <Redirect to="/login" />}
       </Route>
-      <Route path="/bet/edit/:id" exact>
+      <Route path="/betsbyteam/:teamId/bet/edit/:id" exact>
         <EditBet />
       </Route>
 
