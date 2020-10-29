@@ -8,13 +8,21 @@ import { Link, useParams } from "react-router-dom";
 
 const BetList = () => {
     const { bets, getAllBetsForTeam } = useContext(BetContext);
-    const { team, getTeam } = useContext(TeamContext);
     const { id } = useParams();
     const history = useHistory();
     //const { teamId } = useParams();
     const [isLoading, setIsLoading] = useState(false);
     //I need to calculate the win amount by Potential Profit = ToBetAmount x (Odds/100)
     //Math.floor();
+
+
+    const [team, setTeam] = useState();
+    const { getTeam } = useContext(TeamContext);
+    useEffect(() => {
+        getTeam(id).then(setTeam);
+    }, []);
+
+
     useEffect(() => {
         getAllBetsForTeam(id);
         getTeam(id);
@@ -23,14 +31,13 @@ const BetList = () => {
     // useEffect(() => {
     //     getTeam(teamId);
     // }, [])
-
     //const currentUser = JSON.parse(sessionStorage.getItem('userProfile')).firstName;
 
     const teamname = parseInt(id);
-    console.log(teamname);
+
     return (
         <>
-            {/* <Link to={`/team/${id}`}>Back to Team</Link> */}
+            {/* <Link to={`/ team / ${ id }`}>Back to Team</Link> */}
             {bets.length === 0 ? <p>This team has no bets associated.</p> :
                 <div className="container">
                     <div>
@@ -47,26 +54,26 @@ const BetList = () => {
                                         </thead>
                                         <tbody>
                                             <td>{bet.id}</td>
-                                            <td>{bet.toBetAmount}</td>
-                                            <td>{bet.toBetAmount * 10}</td>
-                                            <Link to={`/bet/edit/${bet.id}`}>
+                                            <td>${bet.toBetAmount}</td>
+                                            <td>${bet.toBetAmount * (team.odds / 100)}</td>
+                                            <Link to={`/ bet / edit / ${bet.id}`}>
                                                 Edit Bet
                                             </Link>
                                             <br />
-                                            <Link to={`/bet/delete/${bet.id}`}>
+                                            <Link to={`/ bet / delete /${bet.id}`}>
                                                 Delete Bet
-                                            </Link>
-                                        </tbody>
-                                    </Table>
+                                            </Link >
+                                        </tbody >
+                                    </Table >
                                 )
                             })}
                             <Button block className="cancelEdit" type="button" color="danger" isLoading={isLoading}
                                 onClick={() => history.goBack()}>
                                 {'Go Back'}
                             </Button>
-                        </div>
-                    </div>
-                </div>
+                        </div >
+                    </div >
+                </div >
             }
         </>
     );
