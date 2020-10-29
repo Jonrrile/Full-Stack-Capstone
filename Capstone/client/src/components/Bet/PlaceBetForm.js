@@ -3,18 +3,26 @@ import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { BetContext } from "../../providers/BetProvider";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import { TeamContext } from "../../providers/TeamProvider";
 
 const PlaceBet = () => {
 
     const { id } = useParams();
     const history = useHistory();
     const { placeBet } = useContext(BetContext);
+    const [team, setTeam] = useState();
+    const { getTeam } = useContext(TeamContext);
     const [isLoading, setIsLoading] = useState(false)
     const [newBet, setNewBet] = useState({
         teamId: parseInt(id),
         userProfileId: 1,
         toBetAmount: "",
     })
+
+    useEffect(() => {
+        getTeam(id).then(setTeam);
+    }, []);
+
     //Above is where the problem for add is. Hardcoding for now.
     const handleFieldChange = (e) => {
         const stateToChange = { ...newBet };
@@ -40,6 +48,7 @@ const PlaceBet = () => {
         <>
 
             <h3> Place a Bet! </h3>
+            {/* <h2>{setTeam.name}</h2> */}
             <Form>
                 <FormGroup>
                     <Label htmlFor="toBetAmount"><strong>Bet Amount</strong></Label>

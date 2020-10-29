@@ -11,17 +11,23 @@ const BetList = () => {
     const { team, getTeam } = useContext(TeamContext);
     const { id } = useParams();
     const history = useHistory();
-    const { teamId } = useParams();
+    //const { teamId } = useParams();
     const [isLoading, setIsLoading] = useState(false);
-
-
+    //I need to calculate the win amount by Potential Profit = ToBetAmount x (Odds/100)
+    //Math.floor();
     useEffect(() => {
         getAllBetsForTeam(id);
         getTeam(id);
     }, []);
 
+    // useEffect(() => {
+    //     getTeam(teamId);
+    // }, [])
+
     //const currentUser = JSON.parse(sessionStorage.getItem('userProfile')).firstName;
 
+    const teamname = parseInt(id);
+    console.log(teamname);
     return (
         <>
             {/* <Link to={`/team/${id}`}>Back to Team</Link> */}
@@ -29,7 +35,7 @@ const BetList = () => {
                 <div className="container">
                     <div>
                         <div>
-                            <h2>Active Bets</h2>
+                            <h2>Active Bets for {id}</h2>
                             {bets && bets.map((bet) => {
                                 return (
                                     <Table striped bordered hover>
@@ -37,16 +43,17 @@ const BetList = () => {
                                             <th>Ticket #</th>
                                             <th>Bet Amount</th>
                                             <th>Win Amount</th>
+                                            <th>Placed By</th>
                                         </thead>
                                         <tbody>
                                             <td>{bet.id}</td>
                                             <td>{bet.toBetAmount}</td>
                                             <td>{bet.toBetAmount * 10}</td>
-                                            <Link to={`/bet/edit/${id}`}>
+                                            <Link to={`/bet/edit/${bet.id}`}>
                                                 Edit Bet
                                             </Link>
                                             <br />
-                                            <Link to={`/bet/delete/${id}`}>
+                                            <Link to={`/bet/delete/${bet.id}`}>
                                                 Delete Bet
                                             </Link>
                                         </tbody>

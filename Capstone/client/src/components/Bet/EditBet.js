@@ -7,6 +7,7 @@ import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 const EditBet = () => {
     const { id } = useParams(); //Url parameters for commentId
     const history = useHistory();
+    const { teamId } = useParams();
     const { editBet, getBetById } = useContext(BetContext); //Pulling from Context
     const [isLoading, setIsLoading] = useState(false);
     const [updatedBet, setUpdatedBet] = useState({}) //Setting new comment after updated
@@ -20,10 +21,15 @@ const EditBet = () => {
         stateToChange[e.target.id] = e.target.value;
         setUpdatedBet(stateToChange)
     }
-
+    // Some kind of something going on in here that is not working.
     const editABet = (e) => {
+        const betToEdit = {
+            id: parseInt(id),
+            toBetAmount: parseInt(updatedBet.toBetAmount),
+
+        }
         setIsLoading(true);
-        editBet(updatedBet);
+        editBet(betToEdit);
         setIsLoading(false);
         history.goBack();
     }
@@ -33,13 +39,13 @@ const EditBet = () => {
             <Form>
                 <h3> Edit Your Bet </h3>
                 <FormGroup>
-                    <Label htmlFor="amount"><strong>Bet Amount</strong></Label>
+                    <Label htmlFor="toBetAmount"><strong>Bet Amount</strong></Label>
                     <Input className="p-2 bd-highlight justify-content-center"
                         defaultValue={updatedBet.toBetAmount}
                         onChange={handleEditFieldChange}
                         type="number"
-                        name="amount"
-                        id="amount"
+                        name="toBetAmount"
+                        id="toBetAmount"
                     />
                 </FormGroup>
             </Form >
