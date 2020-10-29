@@ -13,7 +13,7 @@ const PlaceBet = () => {
     const [newBet, setNewBet] = useState({
         teamId: parseInt(id),
         userProfileId: 1,
-        toBetAmount: 500
+        toBetAmount: "",
     })
     //Above is where the problem for add is. Hardcoding for now.
     const handleFieldChange = (e) => {
@@ -27,6 +27,9 @@ const PlaceBet = () => {
             alert("please enter an amount");
         } else {
             setIsLoading(true);
+
+            const parseBet = parseInt(newBet.toBetAmount)
+            newBet.toBetAmount = parseBet;
             placeBet(newBet);
             setIsLoading(false);
             history.push(`/betsbyteam/${id}`)
@@ -35,8 +38,9 @@ const PlaceBet = () => {
 
     return (
         <>
+
+            <h3> Place a Bet! </h3>
             <Form>
-                <h3> Place a Bet! </h3>
                 <FormGroup>
                     <Label htmlFor="toBetAmount"><strong>Bet Amount</strong></Label>
                     <Input className="p-2 bd-highlight justify-content-center"

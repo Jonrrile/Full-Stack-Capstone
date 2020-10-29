@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const Team = ({ team }) => {
     return (
         <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={team.imageLocation} />
+            <Card.Img variant="top" src={team.imageLocation} width="60px" height="200px" />
             <Card.Body>
                 <Card.Title>{team.name}</Card.Title>
                 <Button variant="light">
