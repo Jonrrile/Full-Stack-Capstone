@@ -149,11 +149,11 @@ namespace Capstone.Repositories
                     cmd.CommandText = @"
                         UPDATE Bet
                         SET
-                            UserProfileId = @userProfileId,
-                            ToBetAmount - @toBetAmount
+                                    
+ 
+                            ToBetAmount = @toBetAmount
                         WHERE Id = @id";
 
-                    cmd.Parameters.AddWithValue("@userProfileId", bet.UserProfileId);
                     cmd.Parameters.AddWithValue("@toBetAmount", bet.ToBetAmount);
                     cmd.Parameters.AddWithValue("@id", bet.Id);
 

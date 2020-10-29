@@ -11,18 +11,18 @@ const BetList = () => {
     const { team, getTeam } = useContext(TeamContext);
     const { id } = useParams();
     const history = useHistory();
-    const { teamId } = useParams();
+    //const { teamId } = useParams();
     const [isLoading, setIsLoading] = useState(false);
-
-
+    //I need to calculate the win amount by Potential Profit = ToBetAmount x (Odds/100)
+    //Math.floor();
     useEffect(() => {
         getAllBetsForTeam(id);
         getTeam(id);
     }, []);
 
-    useEffect(() => {
-        getTeam(id);
-    }, [])
+    // useEffect(() => {
+    //     getTeam(teamId);
+    // }, [])
 
     //const currentUser = JSON.parse(sessionStorage.getItem('userProfile')).firstName;
 
@@ -49,7 +49,7 @@ const BetList = () => {
                                             <td>{bet.id}</td>
                                             <td>{bet.toBetAmount}</td>
                                             <td>{bet.toBetAmount * 10}</td>
-                                            <Link to={`/betsbyteam/${teamId}/bet/edit/${id}`}>
+                                            <Link to={`/bet/edit/${bet.id}`}>
                                                 Edit Bet
                                             </Link>
                                             <br />
