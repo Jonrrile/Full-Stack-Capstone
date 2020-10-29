@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { BetContext } from "../../providers/BetProvider";
 import { TeamContext } from "../../providers/TeamProvider";
 import { useHistory } from "react-router-dom";
-import { Col, Row, Button, Card, CardBody, CardTitle, CardText } from "reactstrap";
+import { Col, Row, Button, Card, CardBody, CardTitle, Table, CardText } from "reactstrap";
 import { Link, useParams } from "react-router-dom";
 
 
@@ -29,22 +29,28 @@ const BetList = () => {
                 <div className="container">
                     <div>
                         <div>
+                            <h2>Active Bets</h2>
                             {bets && bets.map((bet) => {
                                 return (
-                                    <Card>
-                                        <CardBody>
-                                            <CardTitle><strong>Bet Amount:</strong></CardTitle>
-                                            <CardText>{bet.toBetAmount}</CardText>
-                                            <CardTitle><strong>To Win Amount:</strong></CardTitle>
-                                            <CardText>{bet.toBetAmount * 10}</CardText>
-                                        </CardBody>
-                                        <Link to={`/bet/edit/${id}`}><Button variant="light">
-                                            Edit Bet
-                                            </Button></Link>
-                                        <Link to={`/bet/delete/${id}`}><Button variant="light">
-                                            Delete Bet
-                                            </Button></Link>
-                                    </Card>
+                                    <Table striped bordered hover>
+                                        <thead>
+                                            <th>Ticket #</th>
+                                            <th>Bet Amount</th>
+                                            <th>Win Amount</th>
+                                        </thead>
+                                        <tbody>
+                                            <td>{bet.id}</td>
+                                            <td>{bet.toBetAmount}</td>
+                                            <td>{bet.toBetAmount * 10}</td>
+                                            <Link to={`/bet/edit/${id}`}>
+                                                Edit Bet
+                                            </Link>
+                                            <br />
+                                            <Link to={`/bet/delete/${id}`}>
+                                                Delete Bet
+                                            </Link>
+                                        </tbody>
+                                    </Table>
                                 )
                             })}
                             <Button block className="cancelEdit" type="button" color="danger" isLoading={isLoading}
