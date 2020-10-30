@@ -10,13 +10,14 @@ const BetList = () => {
     const { bets, getAllBetsForTeam } = useContext(BetContext);
     const { id } = useParams();
     const history = useHistory();
-    //const { teamId } = useParams();
+    const { teamId } = useParams();
     const [isLoading, setIsLoading] = useState(false);
     //I need to calculate the win amount by Potential Profit = ToBetAmount x (Odds/100)
     //Math.floor();
 
-
-    const [team, setTeam] = useState();
+    //set initial object
+    const [team, setTeam] = useState({
+    });
     const { getTeam } = useContext(TeamContext);
     useEffect(() => {
         getTeam(id).then(setTeam);
@@ -28,13 +29,12 @@ const BetList = () => {
         getTeam(id);
     }, []);
 
-    // useEffect(() => {
-    //     getTeam(teamId);
-    // }, [])
+    useEffect(() => {
+        getTeam(teamId);
+    }, [])
     //const currentUser = JSON.parse(sessionStorage.getItem('userProfile')).firstName;
-
-    const teamname = parseInt(id);
-
+    const toWinAmount = team.odds;
+    console.log(toWinAmount);
     return (
         <>
             {/* <Link to={`/ team / ${ id }`}>Back to Team</Link> */}
@@ -42,25 +42,27 @@ const BetList = () => {
                 <div className="container">
                     <div>
                         <div>
-                            <h2>Active Bets for {id}</h2>
+                            <h2>Active Bets for {team.name}</h2>
                             {bets && bets.map((bet) => {
                                 return (
                                     <Table striped bordered hover>
                                         <thead>
                                             <th>Ticket #</th>
                                             <th>Bet Amount</th>
-                                            <th>Win Amount</th>
+                                            <th>Team Odds</th>
+                                            <th>Potential Winnings</th>
                                             <th>Placed By</th>
                                         </thead>
                                         <tbody>
                                             <td>{bet.id}</td>
                                             <td>${bet.toBetAmount}</td>
+                                            <td>{team.odds}</td>
                                             <td>${bet.toBetAmount * (team.odds / 100)}</td>
-                                            <Link to={`/ bet / edit / ${bet.id}`}>
+                                            <Link to={`/bet/edit/${bet.id}`}>
                                                 Edit Bet
                                             </Link>
                                             <br />
-                                            <Link to={`/ bet / delete /${bet.id}`}>
+                                            <Link to={`/bet/delete/${bet.id}`}>
                                                 Delete Bet
                                             </Link >
                                         </tbody >
