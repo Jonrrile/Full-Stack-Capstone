@@ -6,7 +6,6 @@ import { UserProfileContext } from "../providers/UserProfileProvider";
 export default function Register() {
     const history = useHistory();
     const { register } = useContext(UserProfileContext);
-
     const [name, setName] = useState();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();

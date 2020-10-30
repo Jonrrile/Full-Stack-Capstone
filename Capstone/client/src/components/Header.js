@@ -1,13 +1,8 @@
 import React, { useState, useContext } from 'react';
 import { NavLink as RRNavLink } from "react-router-dom";
 import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink
+  Collapse, Navbar, NavbarToggler,
+  NavbarBrand, Nav, NavItem, NavLink
 } from 'reactstrap';
 import { UserProfileContext } from "../providers/UserProfileProvider";
 

@@ -1,8 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import { Card, CardBody, Button } from "reactstrap";
-import { UserProfileContext } from "../../providers/UserProfileProvider";
+import { Button } from "reactstrap";
 import { BetContext } from "../../providers/BetProvider";
 
 const DeleteBet = () => {
@@ -21,7 +20,7 @@ const DeleteBet = () => {
     return (
         <>
             <div>
-                <h3>Are you sure you want to delete this bet? </h3>
+                <h3>Are you sure you want to delete this bet?</h3>
                 <Button block className="deleteBetButton" type="button" color="danger"
                     onClick={deleteABet}>
                     {'Delete Bet'}

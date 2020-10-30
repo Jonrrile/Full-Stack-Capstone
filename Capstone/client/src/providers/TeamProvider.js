@@ -18,7 +18,6 @@ export const TeamProvider = (props) => {
       }).then(resp => resp.json())
         .then(setTeams));
 
-
   const getTeam = (id) =>
     getToken().then((token) =>
       fetch(`/api/team/${id}`, {
@@ -36,19 +35,11 @@ export const TeamProvider = (props) => {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`
-          //Having a problem here. 
         },
         body: JSON.stringify(team)
       })
     })
   }
-
-
-
-  // const getTeamData = () => {
-  //   return fetch("https://api.the-odds-api.com/v3/sports?apiKey=e41356749169d3c9782c88e9aecc16b3")
-  //     .then((res) => res.json());
-  // };
 
   return (
     <TeamContext.Provider value={{ teams, getAllTeams, getTeam, editTeam }}>

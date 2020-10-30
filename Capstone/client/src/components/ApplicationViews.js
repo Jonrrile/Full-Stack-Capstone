@@ -46,7 +46,6 @@ export default function ApplicationViews() {
         <EditBet />
       </Route>
 
-
       <Route path="/login">
         <Login />
       </Route>
