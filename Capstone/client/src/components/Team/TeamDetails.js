@@ -1,12 +1,8 @@
 import React, { useEffect, useContext, useState } from "react";
 import { TeamContext } from "../../providers/TeamProvider";
 import { useParams } from "react-router-dom";
-import Team from "./Team";
 import { Link } from "react-router-dom";
-import {
-    Button, Image, ListGroupItem,
-    Card, Container, CardGroup, CardDeck, CardColumns
-} from 'react-bootstrap';
+import { Button, Image, Container } from 'react-bootstrap';
 
 const TeamDetails = () => {
     const [team, setTeam] = useState();

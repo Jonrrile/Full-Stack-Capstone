@@ -1,8 +1,5 @@
 import React from "react";
-import {
-    Button, ListGroup, ListGroupItem,
-    Card, CardGroup, CardDeck, CardColumns, Container, Row
-} from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 
 const Team = ({ team }) => {

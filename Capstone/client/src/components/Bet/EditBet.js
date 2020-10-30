@@ -5,28 +5,26 @@ import { BetContext } from "../../providers/BetProvider";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 
 const EditBet = () => {
-    const { id } = useParams(); //Url parameters for commentId
+    const { id } = useParams();
     const history = useHistory();
     const { teamId } = useParams();
-    const { editBet, getBetById } = useContext(BetContext); //Pulling from Context
+    const { editBet, getBetById } = useContext(BetContext);
     const [isLoading, setIsLoading] = useState(false);
-    const [updatedBet, setUpdatedBet] = useState({}) //Setting new comment after updated
+    const [updatedBet, setUpdatedBet] = useState({});
 
-    useEffect(() => { //Every time the page is loaded essentially
-        getBetById(id).then(setUpdatedBet); //Get the ID then populate the fields with the existing values
+    useEffect(() => {
+        getBetById(id).then(setUpdatedBet);
     }, [])
 
-    const handleEditFieldChange = (e) => { //Affordance for when values are updated in the input
+    const handleEditFieldChange = (e) => {
         const stateToChange = { ...updatedBet }
         stateToChange[e.target.id] = e.target.value;
         setUpdatedBet(stateToChange)
     }
-    // Some kind of something going on in here that is not working.
     const editABet = (e) => {
         const betToEdit = {
             id: parseInt(id),
             toBetAmount: parseInt(updatedBet.toBetAmount),
-
         }
         setIsLoading(true);
         editBet(betToEdit);

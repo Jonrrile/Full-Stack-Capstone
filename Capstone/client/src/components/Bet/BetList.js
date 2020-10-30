@@ -2,9 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { BetContext } from "../../providers/BetProvider";
 import { TeamContext } from "../../providers/TeamProvider";
 import { useHistory } from "react-router-dom";
-import { Col, Row, Button, Card, CardBody, CardTitle, Table, CardText } from "reactstrap";
+import { Button, Table } from "reactstrap";
 import { Link, useParams } from "react-router-dom";
-
 
 const BetList = () => {
     const { bets, getAllBetsForTeam } = useContext(BetContext);
@@ -14,7 +13,6 @@ const BetList = () => {
     const [isLoading, setIsLoading] = useState(false);
     //I need to calculate the win amount by Potential Profit = ToBetAmount x (Odds/100)
     //Math.floor();
-
     //set initial object
     const [team, setTeam] = useState({
     });
@@ -22,7 +20,6 @@ const BetList = () => {
     useEffect(() => {
         getTeam(id).then(setTeam);
     }, []);
-
 
     useEffect(() => {
         getAllBetsForTeam(id);
@@ -32,12 +29,9 @@ const BetList = () => {
     useEffect(() => {
         getTeam(teamId);
     }, [])
-    //const currentUser = JSON.parse(sessionStorage.getItem('userProfile')).firstName;
-    const toWinAmount = team.odds;
-    console.log(toWinAmount);
+
     return (
         <>
-            {/* <Link to={`/ team / ${ id }`}>Back to Team</Link> */}
             {bets.length === 0 ? <p>This team has no bets associated.</p> :
                 <div className="container">
                     <div>

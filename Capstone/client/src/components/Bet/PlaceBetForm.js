@@ -6,7 +6,6 @@ import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 import { TeamContext } from "../../providers/TeamProvider";
 
 const PlaceBet = () => {
-
     const { id } = useParams();
     const history = useHistory();
     const { placeBet } = useContext(BetContext);
@@ -23,7 +22,6 @@ const PlaceBet = () => {
         getTeam(id).then(setTeam);
     }, []);
 
-    //Above is where the problem for add is. Hardcoding for now.
     const handleFieldChange = (e) => {
         const stateToChange = { ...newBet };
         stateToChange[e.target.id] = e.target.value;
@@ -35,7 +33,6 @@ const PlaceBet = () => {
             alert("please enter an amount");
         } else {
             setIsLoading(true);
-
             const parseBet = parseInt(newBet.toBetAmount)
             newBet.toBetAmount = parseBet;
             placeBet(newBet);
@@ -48,7 +45,6 @@ const PlaceBet = () => {
         <>
 
             <h3> Place a Bet! </h3>
-            {/* <h2>{setTeam.name}</h2> */}
             <Form>
                 <FormGroup>
                     <Label htmlFor="toBetAmount"><strong>Bet Amount</strong></Label>

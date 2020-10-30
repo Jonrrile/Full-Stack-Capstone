@@ -14,7 +14,6 @@ export const BetProvider = (props) => {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
-
             }).then(resp => resp.json()).then(setBets);
         })
     };
