@@ -13,9 +13,14 @@ const DeleteBet = () => {
         getBetById(id);
     }, [])
 
+    const currentUser = JSON.parse(sessionStorage.getItem('userProfile')).id;
+    console.log(currentUser);
+
     const deleteABet = () => {
         deleteBet(id).then(history.goBack())
     }
+
+
 
     return (
         <>

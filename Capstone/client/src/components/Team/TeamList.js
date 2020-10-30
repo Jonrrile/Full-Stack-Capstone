@@ -12,7 +12,7 @@ const TeamList = () => {
 
   return (
     <div>
-      <h2>Odds to win the SuperBowl as of 10/27/2020</h2>
+      <h2>Odds to win the SuperBowl</h2>
       <h6>Simply click on 'Adjust Odds' if you want to adjust or change odds for your favorite team!</h6>
       <Container fluid="md">
         <CardColumns>
