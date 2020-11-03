@@ -12,9 +12,10 @@ const PlaceBet = () => {
     const [team, setTeam] = useState();
     const { getTeam } = useContext(TeamContext);
     const [isLoading, setIsLoading] = useState(false)
+    const currentUser = JSON.parse(sessionStorage.getItem('userProfile')).id;
     const [newBet, setNewBet] = useState({
         teamId: parseInt(id),
-        userProfileId: 1,
+        userProfileId: currentUser,
         toBetAmount: "",
     })
 

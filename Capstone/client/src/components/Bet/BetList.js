@@ -29,6 +29,9 @@ const BetList = () => {
     useEffect(() => {
         getTeam(teamId);
     }, [])
+    const currentUser = JSON.parse(sessionStorage.getItem('userProfile')).id;
+    console.log(currentUser);
+
 
     return (
         <>
@@ -38,30 +41,37 @@ const BetList = () => {
                         <div>
                             <h2>Active Bets for {team.name}</h2>
                             {bets && bets.map((bet) => {
-                                return (
-                                    <Table striped bordered hover>
-                                        <thead>
-                                            <th>Ticket #</th>
-                                            <th>Bet Amount</th>
-                                            <th>Team Odds</th>
-                                            <th>Potential Winnings</th>
-                                            <th>Placed By</th>
-                                        </thead>
-                                        <tbody>
-                                            <td>{bet.id}</td>
-                                            <td>${bet.toBetAmount}</td>
-                                            <td>{team.odds}</td>
-                                            <td>${bet.toBetAmount * (team.odds / 100)}</td>
-                                            <Link to={`/bet/edit/${bet.id}`}>
-                                                Edit Bet
+                                // console.log(bet.userProfileId);
+                                if (currentUser == bet.userProfileId) {
+                                    return (
+                                        <Table striped bordered hover>
+                                            <thead>
+                                                <th>Ticket #</th>
+                                                <th>Bet Amount</th>
+                                                <th>Team Odds</th>
+                                                <th>Potential Winnings</th>
+                                                <th></th>
+                                            </thead>
+                                            <tbody>
+                                                <td>{bet.id}</td>
+                                                <td>${bet.toBetAmount}</td>
+                                                <td>{team.odds}</td>
+                                                <td>${bet.toBetAmount * (team.odds / 100)}</td>
+                                                <Link to={`/bet/edit/${bet.id}`}>
+                                                    Edit Bet
                                             </Link>
-                                            <br />
-                                            <Link to={`/bet/delete/${bet.id}`}>
-                                                Delete Bet
+                                                <br />
+                                                <Link to={`/bet/delete/${bet.id}`}>
+                                                    Delete Bet
                                             </Link >
-                                        </tbody >
-                                    </Table >
-                                )
+                                            </tbody >
+                                        </Table >
+                                    )
+                                } else {
+                                    return (
+                                        <input type="hidden"></input>
+                                    )
+                                }
                             })}
                             <Button block className="cancelEdit" type="button" color="danger" isLoading={isLoading}
                                 onClick={() => history.goBack()}>

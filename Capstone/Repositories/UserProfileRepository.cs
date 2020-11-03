@@ -17,7 +17,8 @@ namespace Capstone.Repositories
                 {
                     cmd.CommandText = @"
                         SELECT Id, FirebaseUserId, Name, Email
-                          FROM UserProfile";
+                          FROM UserProfile
+                    WHERE FirebaseUserId = @FirebaseUserId";
 
                     DbUtils.AddParameter(cmd, "@FirebaseUserId", firebaseUserId);
                

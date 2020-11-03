@@ -13,12 +13,12 @@ export default function Register() {
 
     const registerClick = (e) => {
         e.preventDefault();
-        if (password && password !== confirmPassword) {
-            alert("Passwords don't match. Do better.");
+        if (password && password !== confirmPassword || password.length <= 6) {
+            alert("Password needs to match and be longer than six characters.");
         } else {
             const userProfile = { name, email };
             register(userProfile, password)
-                .then(() => history.push("/"));
+                .then(() => history.push("/teams"));
         }
     };
 
