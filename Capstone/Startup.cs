@@ -24,6 +24,7 @@ namespace Capstone
             services.AddTransient<ITeamRepository, TeamRepository>();
             services.AddTransient<IUserProfileRepository, UserProfileRepository>();
             services.AddTransient<IBetRepository, BetRepository>();
+            services.AddTransient<IMatchupRepository, MatchupRepository>();
 
             var firebaseProjectId = Configuration.GetValue<string>("FirebaseProjectId");
             var googleTokenUrl = $"https://securetoken.google.com/{firebaseProjectId}";

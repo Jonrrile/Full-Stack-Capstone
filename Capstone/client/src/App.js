@@ -6,6 +6,7 @@ import { TeamProvider } from "./providers/TeamProvider";
 import Header from "./components/Header";
 import { UserProfileProvider } from "./providers/UserProfileProvider";
 import { BetProvider } from "./providers/BetProvider";
+import { MatchupProvider } from "./providers/MatchupProvider";
 
 function App() {
   return (
@@ -13,10 +14,12 @@ function App() {
       <Router>
         <UserProfileProvider>
           <TeamProvider>
-            <BetProvider>
-              <Header />
-              <ApplicationViews />
-            </BetProvider>
+            <MatchupProvider>
+              <BetProvider>
+                <Header />
+                <ApplicationViews />
+              </BetProvider>
+            </MatchupProvider>
           </TeamProvider>
         </UserProfileProvider>
       </Router>

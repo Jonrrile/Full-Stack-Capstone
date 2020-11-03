@@ -11,6 +11,7 @@ import { UserProfileContext } from "../providers/UserProfileProvider";
 import EditTeam from "./Team/EditTeamOdds";
 import DeleteBet from "./Bet/DeleteBet";
 import EditBet from "./Bet/EditBet";
+import MatchupList from "./Matchup/MatchupList";
 
 export default function ApplicationViews() {
   const { isLoggedIn } = useContext(UserProfileContext);
@@ -19,6 +20,10 @@ export default function ApplicationViews() {
     <Switch>
       <Route path="/" exact>
         <Home />
+      </Route>
+
+      <Route path="/matchups" exact>
+        <MatchupList />
       </Route>
 
       {/* Team Routes */}

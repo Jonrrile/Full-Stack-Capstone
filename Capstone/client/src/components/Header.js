@@ -14,7 +14,7 @@ export default function Header() {
   return (
     <div>
       <Navbar color="dark" dark expand="md">
-        <NavbarBrand tag={RRNavLink} to="/">BetOnIt!</NavbarBrand>
+        <NavbarBrand tag={RRNavLink} to="/matchups">BetOnIt!</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
