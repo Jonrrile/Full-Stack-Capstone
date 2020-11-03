@@ -6,20 +6,26 @@ import Team from "./Team";
 const TeamList = () => {
   const { teams, getAllTeams } = useContext(TeamContext);
 
+  const TeamHeader = {
+    textAlign: "center",
+    fontFamily: "Georgia, Times, serif",
+    fontSize: "28px"
+  }
+
   useEffect(() => {
     getAllTeams();
   }, []);
 
   return (
     <div>
-      <h2>Odds to win the SuperBowl</h2>
-      <h6>Simply click on 'Adjust Odds' if you want to adjust or change odds for your favorite team!</h6>
+      <header style={TeamHeader}>Take your team to the <strong>Super Bowl</strong>!</header>
+      <p style={TeamHeader}>Adjust the odds for your favorite team and place mock bets.</p>
       <Container fluid="md">
-        <CardColumns>
-          {teams.map((team) => (
-            <Team key={team.id} team={team} />
-          ))}
-        </CardColumns>
+
+        {teams.map((team) => (
+          <Team key={team.id} team={team} />
+        ))}
+
       </Container >
     </div>
   );

@@ -23,7 +23,7 @@ namespace Capstone.Repositories
                     cmd.CommandText = @"
                           SELECT Id, Name, Odds, ImageLocation, Fact 
                             FROM Team
-                            ORDER BY Odds ASC";
+                            ORDER BY Name ASC";
 
                     var reader = cmd.ExecuteReader();
 

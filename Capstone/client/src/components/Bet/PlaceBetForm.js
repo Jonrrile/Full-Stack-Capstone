@@ -59,11 +59,11 @@ const PlaceBet = () => {
                     />
                 </FormGroup>
             </Form >
-            <Button block className="placeBet" type="button" color="success"
+            <Button block className="placeBet" type="button"
                 isLoading={isLoading} onClick={placeNewBet}>
                 {'Place Bet'}
             </Button>
-            <Button block className="goBack" type="button" color="danger"
+            <Button block className="goBack" type="button"
                 isLoading={isLoading} onClick={() => history.goBack()}>
                 {'Cancel'}</Button>
         </>

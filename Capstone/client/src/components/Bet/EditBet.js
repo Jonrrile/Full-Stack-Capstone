@@ -47,11 +47,11 @@ const EditBet = () => {
                     />
                 </FormGroup>
             </Form >
-            <Button block className="editBet" type="button" color="success" isLoading={isLoading}
+            <Button block className="editBet" type="button" isLoading={isLoading}
                 onClick={editABet}>
                 {'Submit'}
             </Button>
-            <Button block className="cancelEdit" type="button" color="danger" isLoading={isLoading}
+            <Button block className="cancelEdit" type="button" isLoading={isLoading}
                 onClick={() => history.goBack()}>
                 {'Cancel'}
             </Button>

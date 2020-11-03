@@ -21,7 +21,10 @@ export default function Header() {
             {isLoggedIn &&
               <>
                 <NavItem>
-                  <NavLink tag={RRNavLink} to="/teams">Teams</NavLink>
+                  <NavLink tag={RRNavLink} to="/matchups">Home</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink tag={RRNavLink} to="/teams">All Teams</NavLink>
                 </NavItem>
                 <NavItem>
                   <a aria-current="page" className="nav-link"

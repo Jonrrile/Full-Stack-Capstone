@@ -49,11 +49,11 @@ const EditTeam = () => {
                     />
                 </FormGroup>
             </Form >
-            <Button block className="editTeam" type="button" color="success" isLoading={isLoading}
+            <Button block className="editTeam" type="button" isLoading={isLoading}
                 onClick={editATeam}>
                 {'Submit'}
             </Button>
-            <Button block className="cancelEdit" type="button" color="danger" isLoading={isLoading}
+            <Button block className="cancelEdit" type="button" isLoading={isLoading}
                 onClick={() => history.goBack()}>
                 {'Cancel'}
             </Button>
