@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { BetContext } from "../../providers/BetProvider";
-import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import { Container, FormControl, Label, InputGroup, Button } from "react-bootstrap";
 import { TeamContext } from "../../providers/TeamProvider";
 
 const PlaceBet = () => {
@@ -44,12 +44,12 @@ const PlaceBet = () => {
 
     return (
         <>
+            <Container>
+                <h3> Place a Bet! </h3>
 
-            <h3> Place a Bet! </h3>
-            <Form>
-                <FormGroup>
-                    <Label htmlFor="toBetAmount"><strong>Bet Amount</strong></Label>
-                    <Input className="p-2 bd-highlight justify-content-center"
+                <InputGroup className="mb-3">
+                    <FormControl
+                        htmlFor="toBetAmount"
                         value={newBet.toBetAmount}
                         onChange={handleFieldChange}
                         type="number"
@@ -57,15 +57,18 @@ const PlaceBet = () => {
                         id="toBetAmount"
                         required=""
                     />
-                </FormGroup>
-            </Form >
-            <Button block className="placeBet" type="button"
-                isLoading={isLoading} onClick={placeNewBet}>
-                {'Place Bet'}
-            </Button>
-            <Button block className="goBack" type="button"
-                isLoading={isLoading} onClick={() => history.goBack()}>
-                {'Cancel'}</Button>
+                    <InputGroup.Append>
+                        <Button variant="outline-secondary"
+                            isLoading={isLoading} onClick={placeNewBet}>
+                            {'Submit'}
+                        </Button>
+                        <Button variant="outline-secondary"
+                            isLoading={isLoading} href="/teams">
+                            {'Cancel'}</Button>
+                    </InputGroup.Append>
+                </InputGroup>
+
+            </Container>
         </>
     )
 };

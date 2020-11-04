@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { BetContext } from "../../providers/BetProvider";
-import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import { Container, FormControl, Label, InputGroup, Button } from "react-bootstrap";
 
 const EditBet = () => {
     const { id } = useParams();
@@ -34,27 +34,30 @@ const EditBet = () => {
 
     return (
         <>
-            <Form>
+            <Container>
                 <h3> Edit Your Bet </h3>
-                <FormGroup>
-                    <Label htmlFor="toBetAmount"><strong>Bet Amount</strong></Label>
-                    <Input className="p-2 bd-highlight justify-content-center"
+                <InputGroup className="mb-3">
+                    <FormControl
+                        htmlFor="toBetAmount"
+                        className="p-2 bd-highlight justify-content-center"
                         defaultValue={updatedBet.toBetAmount}
                         onChange={handleEditFieldChange}
                         type="number"
                         name="toBetAmount"
                         id="toBetAmount"
                     />
-                </FormGroup>
-            </Form >
-            <Button block className="editBet" type="button" isLoading={isLoading}
-                onClick={editABet}>
-                {'Submit'}
-            </Button>
-            <Button block className="cancelEdit" type="button" isLoading={isLoading}
-                onClick={() => history.goBack()}>
-                {'Cancel'}
-            </Button>
+                    <InputGroup.Append>
+                        <Button isLoading={isLoading} variant="outline-secondary"
+                            onClick={editABet}>
+                            {'Submit'}
+                        </Button>
+                        <Button isLoading={isLoading} variant="outline-secondary"
+                            onClick={() => history.goBack()}>
+                            {'Cancel'}
+                        </Button>
+                    </InputGroup.Append>
+                </InputGroup>
+            </Container>
         </>
     )
 };

@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Image, Container } from 'react-bootstrap';
 import { useHistory } from "react-router-dom";
 import { UserProfileContext } from "../providers/UserProfileProvider";
 
@@ -23,28 +23,28 @@ export default function Register() {
     };
 
     return (
-        <Form onSubmit={registerClick}>
-            <fieldset>
-                <FormGroup>
-                    <Label htmlFor="name">Name</Label>
-                    <Input id="name" type="text" onChange={e => setName(e.target.value)} />
-                </FormGroup>
-                <FormGroup>
-                    <Label for="email">Email</Label>
-                    <Input id="email" type="text" onChange={e => setEmail(e.target.value)} />
-                </FormGroup>
-                <FormGroup>
-                    <Label for="password">Password</Label>
-                    <Input id="password" type="password" onChange={e => setPassword(e.target.value)} />
-                </FormGroup>
-                <FormGroup>
-                    <Label for="confirmPassword">Confirm Password</Label>
-                    <Input id="confirmPassword" type="password" onChange={e => setConfirmPassword(e.target.value)} />
-                </FormGroup>
-                <FormGroup>
-                    <Button>Register</Button>
-                </FormGroup>
-            </fieldset>
-        </Form>
+        <Container>
+            <Form onSubmit={registerClick}>
+                <Form.Group>
+                    <Form.Label htmlFor="name">Name</Form.Label>
+                    <Form.Control id="name" type="text" onChange={e => setName(e.target.value)} />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label for="email">Email</Form.Label>
+                    <Form.Control id="email" type="email" onChange={e => setEmail(e.target.value)} />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label for="password">Password</Form.Label>
+                    <Form.Control id="password" type="password" onChange={e => setPassword(e.target.value)} />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label for="confirmPassword">Confirm Password</Form.Label>
+                    <Form.Control id="confirmPassword" type="password" onChange={e => setConfirmPassword(e.target.value)} />
+                </Form.Group>
+                <Form.Group>
+                    <Button variant="dark">Register</Button>
+                </Form.Group>
+            </Form>
+        </Container>
     );
 }

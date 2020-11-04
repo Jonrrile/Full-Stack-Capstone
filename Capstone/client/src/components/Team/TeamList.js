@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { TeamContext } from "../../providers/TeamProvider";
-import { CardColumns, Container } from 'react-bootstrap';
+import { CardColumns, Container, Jumbotron } from 'react-bootstrap';
 import Team from "./Team";
 
 const TeamList = () => {
@@ -18,6 +18,7 @@ const TeamList = () => {
 
   return (
     <div>
+      <Jumbotron className="jumbotron"><h1><i>BetOnIt!</i></h1></Jumbotron>
       <header style={TeamHeader}>Take your team to the <strong>Super Bowl</strong>!</header>
       <p style={TeamHeader}>Adjust the odds for your favorite team and place mock bets.</p>
       <Container fluid="md">

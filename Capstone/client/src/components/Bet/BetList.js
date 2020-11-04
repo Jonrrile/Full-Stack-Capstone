@@ -11,9 +11,7 @@ const BetList = () => {
     const history = useHistory();
     const { teamId } = useParams();
     const [isLoading, setIsLoading] = useState(false);
-    //I need to calculate the win amount by Potential Profit = ToBetAmount x (Odds/100)
-    //Math.floor();
-    //set initial object
+
     const [team, setTeam] = useState({
     });
     const { getTeam } = useContext(TeamContext);
@@ -30,7 +28,6 @@ const BetList = () => {
         getTeam(teamId);
     }, [])
     const currentUser = JSON.parse(sessionStorage.getItem('userProfile')).id;
-    console.log(currentUser);
 
 
     return (
@@ -41,7 +38,6 @@ const BetList = () => {
                         <div>
                             <h2>Active Bets for {team.name}</h2>
                             {bets && bets.map((bet) => {
-                                // console.log(bet.userProfileId);
                                 if (currentUser == bet.userProfileId) {
                                     return (
                                         <Table striped bordered hover>
@@ -73,7 +69,7 @@ const BetList = () => {
                                     )
                                 }
                             })}
-                            <Button block className="cancelEdit" type="button" color="danger" isLoading={isLoading}
+                            <Button color="danger" isLoading={isLoading}
                                 onClick={() => history.goBack()}>
                                 {'Go Back'}
                             </Button>

@@ -19,26 +19,22 @@ const TeamDetails = () => {
 
     return (
         <Container>
-            <Card>
-                <Card.Img variant="top" src={team.imageLocation} width="250px" height="500px" />
-                <Card.Title>
-                    {team.name}
-                </Card.Title>
-                <Card.Body>
-                    <Card.Text>
-                        +{team.odds}
-                    </Card.Text>
-                    <Card.Text>
-                        {team.fact}
-                    </Card.Text>
-                    <Link to={`/betsbyteam/${id}`}><Button variant="light">
-                        View Bets
+            <Image src={team.imageLocation} width="250px" height="250px" />
+            <h3>
+                {team.name}
+            </h3>
+            <p>
+                +{team.odds}
+            </p>
+            <p>
+                {team.fact}
+            </p>
+            <Link to={`/betsbyteam/${id}`}><Button variant="dark">
+                View Bets
                     </Button></Link>
-                    <Link to={`/bet/add/${id}`}><Button variant="light">
-                        Place Bet
+            <Link to={`/bet/add/${id}`}><Button variant="dark">
+                Place Bet
                     </Button></Link>
-                </Card.Body>
-            </Card>
         </Container >
     );
 };

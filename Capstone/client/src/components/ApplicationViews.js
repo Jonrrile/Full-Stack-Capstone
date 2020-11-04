@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import TeamList from "./Team/TeamList";
-import Home from "./Home";
 import Login from "./Login";
 import TeamDetails from "./Team/TeamDetails";
 import BetList from "./Bet/BetList";
@@ -18,12 +17,8 @@ export default function ApplicationViews() {
 
   return (
     <Switch>
-      <Route path="/" exact>
-        <Home />
-      </Route>
-
       <Route path="/matchups" exact>
-        <MatchupList />
+        {isLoggedIn ? <MatchupList /> : <Redirect to="/login" />}
       </Route>
 
       {/* Team Routes */}
@@ -31,7 +26,7 @@ export default function ApplicationViews() {
         {isLoggedIn ? <TeamList /> : <Redirect to="/login" />}
       </Route>
       <Route path="/team/edit/:id" exact>
-        <EditTeam />
+        {isLoggedIn ? <EditTeam /> : <Redirect to="/login" />}
       </Route>
       <Route path="/team/:id">
         {isLoggedIn ? <TeamDetails /> : <Redirect to="/login" />}
@@ -48,7 +43,7 @@ export default function ApplicationViews() {
         {isLoggedIn ? <DeleteBet /> : <Redirect to="/login" />}
       </Route>
       <Route path="/bet/edit/:id" exact>
-        <EditBet />
+        {isLoggedIn ? <EditBet /> : <Redirect to="/login" />}
       </Route>
 
       <Route path="/login">
