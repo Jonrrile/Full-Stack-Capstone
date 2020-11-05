@@ -29,14 +29,23 @@ const BetList = () => {
     }, [])
     const currentUser = JSON.parse(sessionStorage.getItem('userProfile')).id;
 
+    const BetListStyle = {
+        paddingTop: "3rem"
+    }
 
     return (
         <>
-            {bets.length === 0 ? <p>This team has no bets associated.</p> :
+            {bets.length === 0 ? <div style={BetListStyle}><h2>Active Bets for {team.name}</h2> <br />
+                <Button color="danger" isLoading={isLoading}
+                    href="/teams">
+                    {'Back to Teams'}
+                </Button></div> :
                 <div className="container">
                     <div>
                         <div>
-                            <h2>Active Bets for {team.name}</h2>
+                            <div style={BetListStyle}>
+                                <h2>Active Bets for {team.name}</h2>
+                            </div>
                             {bets && bets.map((bet) => {
                                 if (currentUser == bet.userProfileId) {
                                     return (
@@ -62,18 +71,21 @@ const BetList = () => {
                                             </Link >
                                             </tbody >
                                         </Table >
+
                                     )
                                 } else {
                                     return (
-                                        <input type="hidden"></input>
+                                        <div style={BetListStyle}>
+                                            <input type="hidden"></input>
+                                        </div>
                                     )
                                 }
                             })}
                             <Button color="danger" isLoading={isLoading}
-                                onClick={() => history.goBack()}>
-                                {'Go Back'}
+                                href="/teams">
+                                {'Back to Teams'}
                             </Button>
-                        </div >
+                        </div>
                     </div >
                 </div >
             }

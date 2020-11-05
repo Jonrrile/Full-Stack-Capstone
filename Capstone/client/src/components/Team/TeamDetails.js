@@ -17,9 +17,14 @@ const TeamDetails = () => {
         return null;
     }
 
+    const DetailsStyle = {
+        paddingTop: "3rem",
+        width: "400px"
+    }
+
     return (
-        <Container>
-            <Image src={team.imageLocation} width="250px" height="250px" />
+        <Container style={DetailsStyle}>
+            <Image src={team.imageLocation} width="300px" height="250px" />
             <h3>
                 {team.name}
             </h3>

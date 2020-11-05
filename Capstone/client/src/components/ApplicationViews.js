@@ -47,7 +47,7 @@ export default function ApplicationViews() {
         {isLoggedIn ? <EditBet /> : <Redirect to="/login" />}
       </Route>
       <Route path="/FAQ">
-        <Faq />
+        {isLoggedIn ? <Faq /> : <Redirect to="/login" />}
       </Route>
 
       <Route path="/login">
