@@ -24,7 +24,10 @@ export default function Header() {
                   <NavLink tag={RRNavLink} to="/matchups">Home</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink tag={RRNavLink} to="/teams">All Teams</NavLink>
+                  <NavLink tag={RRNavLink} to="/teams">Start Betting</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink tag={RRNavLink} to="/FAQ">FAQ</NavLink>
                 </NavItem>
                 <NavItem>
                   <a aria-current="page" className="nav-link"

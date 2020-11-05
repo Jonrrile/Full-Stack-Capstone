@@ -11,6 +11,7 @@ import EditTeam from "./Team/EditTeamOdds";
 import DeleteBet from "./Bet/DeleteBet";
 import EditBet from "./Bet/EditBet";
 import MatchupList from "./Matchup/MatchupList";
+import Faq from "./FAQ/FAQList";
 
 export default function ApplicationViews() {
   const { isLoggedIn } = useContext(UserProfileContext);
@@ -44,6 +45,9 @@ export default function ApplicationViews() {
       </Route>
       <Route path="/bet/edit/:id" exact>
         {isLoggedIn ? <EditBet /> : <Redirect to="/login" />}
+      </Route>
+      <Route path="/FAQ">
+        <Faq />
       </Route>
 
       <Route path="/login">
