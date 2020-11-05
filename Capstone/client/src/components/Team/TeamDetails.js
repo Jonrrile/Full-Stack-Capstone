@@ -2,7 +2,7 @@ import React, { useEffect, useContext, useState } from "react";
 import { TeamContext } from "../../providers/TeamProvider";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { Button, Image, Container } from 'react-bootstrap';
+import { Button, Image, Container, Card } from 'react-bootstrap';
 
 const TeamDetails = () => {
     const [team, setTeam] = useState();
@@ -17,22 +17,27 @@ const TeamDetails = () => {
         return null;
     }
 
+    const DetailsStyle = {
+        paddingTop: "3rem",
+        width: "400px"
+    }
+
     return (
-        <Container>
-            <Image src={team.imageLocation} rounded />
-            <h2>
+        <Container style={DetailsStyle}>
+            <Image src={team.imageLocation} width="300px" height="250px" />
+            <h3>
                 {team.name}
-            </h2>
-            <h2>
+            </h3>
+            <p>
                 +{team.odds}
-            </h2>
+            </p>
             <p>
                 {team.fact}
             </p>
-            <Link to={`/betsbyteam/${id}`}><Button variant="light">
+            <Link to={`/betsbyteam/${id}`}><Button variant="dark">
                 View Bets
                     </Button></Link>
-            <Link to={`/bet/add/${id}`}><Button variant="light">
+            <Link to={`/bet/add/${id}`}><Button variant="dark">
                 Place Bet
                     </Button></Link>
         </Container >

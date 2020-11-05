@@ -14,14 +14,20 @@ export default function Header() {
   return (
     <div>
       <Navbar color="dark" dark expand="md">
-        <NavbarBrand tag={RRNavLink} to="/">BetOnIt!</NavbarBrand>
+        <NavbarBrand tag={RRNavLink} to="/matchups">BetOnIt!</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             {isLoggedIn &&
               <>
                 <NavItem>
-                  <NavLink tag={RRNavLink} to="/teams">Teams</NavLink>
+                  <NavLink tag={RRNavLink} to="/matchups">Home</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink tag={RRNavLink} to="/teams">Start Betting</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink tag={RRNavLink} to="/FAQ">FAQ</NavLink>
                 </NavItem>
                 <NavItem>
                   <a aria-current="page" className="nav-link"

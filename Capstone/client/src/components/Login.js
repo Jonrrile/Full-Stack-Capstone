@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Image, Container, Jumbotron } from 'react-bootstrap';
 import { useHistory, Link } from "react-router-dom";
 import { UserProfileContext } from "../providers/UserProfileProvider";
 
@@ -12,28 +12,33 @@ export default function Login() {
     const loginSubmit = (e) => {
         e.preventDefault();
         login(email, password)
-            .then(() => history.push("/teams"))
+            .then(() => history.push("/matchups"))
             .catch(() => alert("Invalid email or password"));
     };
 
     return (
-        <Form onSubmit={loginSubmit}>
-            <fieldset>
-                <FormGroup>
-                    <Label for="email">Email</Label>
-                    <Input id="email" type="text" onChange={e => setEmail(e.target.value)} />
-                </FormGroup>
-                <FormGroup>
-                    <Label for="password">Password</Label>
-                    <Input id="password" type="password" onChange={e => setPassword(e.target.value)} />
-                </FormGroup>
-                <FormGroup>
-                    <Button>Login</Button>
-                </FormGroup>
-                <em>
-                    Not registered? <Link to="register">Register</Link>
-                </em>
-            </fieldset>
-        </Form>
+        <div>
+            <Jumbotron className="jumbotron"><h1><i>BetOnIt!</i></h1></Jumbotron>
+            <Container>
+                <Form onSubmit={loginSubmit} className="login">
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label for="email">Email</Form.Label>
+                        <Form.Control type="email" id="email" type="text" onChange={e => setEmail(e.target.value)} />
+                    </Form.Group>
+                    <FormGroup controlId="formBasicPassword">
+                        <Form.Label for="password">Password</Form.Label>
+                        <Form.Control id="password" type="password" onChange={e => setPassword(e.target.value)} />
+                    </FormGroup>
+                    <FormGroup>
+                        <Button variant="dark" type="submit">Login</Button>
+                    </FormGroup>
+                    <FormGroup>
+                        <em>
+                            Not registered? <Link to="register">Register</Link>
+                        </em>
+                    </FormGroup>
+                </Form >
+            </Container>
+        </div>
     );
 }

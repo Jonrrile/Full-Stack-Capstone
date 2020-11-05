@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import TeamList from "./Team/TeamList";
-import Home from "./Home";
 import Login from "./Login";
 import TeamDetails from "./Team/TeamDetails";
 import BetList from "./Bet/BetList";
@@ -11,14 +10,16 @@ import { UserProfileContext } from "../providers/UserProfileProvider";
 import EditTeam from "./Team/EditTeamOdds";
 import DeleteBet from "./Bet/DeleteBet";
 import EditBet from "./Bet/EditBet";
+import MatchupList from "./Matchup/MatchupList";
+import Faq from "./FAQ/FAQList";
 
 export default function ApplicationViews() {
   const { isLoggedIn } = useContext(UserProfileContext);
 
   return (
     <Switch>
-      <Route path="/" exact>
-        <Home />
+      <Route path="/matchups" exact>
+        {isLoggedIn ? <MatchupList /> : <Redirect to="/login" />}
       </Route>
 
       {/* Team Routes */}
@@ -26,7 +27,7 @@ export default function ApplicationViews() {
         {isLoggedIn ? <TeamList /> : <Redirect to="/login" />}
       </Route>
       <Route path="/team/edit/:id" exact>
-        <EditTeam />
+        {isLoggedIn ? <EditTeam /> : <Redirect to="/login" />}
       </Route>
       <Route path="/team/:id">
         {isLoggedIn ? <TeamDetails /> : <Redirect to="/login" />}
@@ -43,7 +44,10 @@ export default function ApplicationViews() {
         {isLoggedIn ? <DeleteBet /> : <Redirect to="/login" />}
       </Route>
       <Route path="/bet/edit/:id" exact>
-        <EditBet />
+        {isLoggedIn ? <EditBet /> : <Redirect to="/login" />}
+      </Route>
+      <Route path="/FAQ">
+        {isLoggedIn ? <Faq /> : <Redirect to="/login" />}
       </Route>
 
       <Route path="/login">

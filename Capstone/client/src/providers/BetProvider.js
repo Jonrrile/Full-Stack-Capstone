@@ -17,7 +17,16 @@ export const BetProvider = (props) => {
             }).then(resp => resp.json()).then(setBets);
         })
     };
-
+    const getAllUserBets = (id) => {
+        getToken().then((token) =>
+            fetch(`/api/bet/getallbetsbyuser/${id}`, {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }).then((res) => res.json())
+                .then(setBets));
+    }
     const placeBet = (newBet) => {
         return getToken().then((token) => {
             fetch("/api/bet/", {
@@ -68,7 +77,7 @@ export const BetProvider = (props) => {
     return (
         <BetContext.Provider value={{
             bets, getAllBetsForTeam, placeBet, getBetById,
-            deleteBet, editBet
+            deleteBet, editBet, getAllUserBets
         }}>
             {props.children}
         </BetContext.Provider>

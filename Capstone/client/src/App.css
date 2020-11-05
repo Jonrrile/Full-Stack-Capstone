@@ -2,6 +2,25 @@
   text-align: center;
 }
 
+.jumbotron {
+  background-image: url(/src/Stadium.jpg);
+  background-size: cover;
+  color: aliceblue;
+}
+
+.footballField {
+  background-image: url("https://media.istockphoto.com/vectors/american-football-field-with-marking-football-field-in-top-view-with-vector-id971169164?k=6&m=971169164&s=612x612&w=0&h=8XXPzCvUh3w63UFiNlwqaNIszHueK-2ywoQ1g5VPIVE=");
+}
+.matchupHeader {
+  border: green solid;
+  border-radius: 25px;
+ background-color: yellow;
+}
+
+.footballNews {
+  border: brown dashed;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

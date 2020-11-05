@@ -11,9 +11,7 @@ const BetList = () => {
     const history = useHistory();
     const { teamId } = useParams();
     const [isLoading, setIsLoading] = useState(false);
-    //I need to calculate the win amount by Potential Profit = ToBetAmount x (Odds/100)
-    //Math.floor();
-    //set initial object
+
     const [team, setTeam] = useState({
     });
     const { getTeam } = useContext(TeamContext);
@@ -30,18 +28,25 @@ const BetList = () => {
         getTeam(teamId);
     }, [])
     const currentUser = JSON.parse(sessionStorage.getItem('userProfile')).id;
-    console.log(currentUser);
 
+    const BetListStyle = {
+        paddingTop: "3rem"
+    }
 
     return (
         <>
-            {bets.length === 0 ? <p>This team has no bets associated.</p> :
+            {bets.length === 0 ? <div style={BetListStyle}><h2>Active Bets for {team.name}</h2> <br />
+                <Button color="danger" isLoading={isLoading}
+                    href="/teams">
+                    {'Back to Teams'}
+                </Button></div> :
                 <div className="container">
                     <div>
                         <div>
-                            <h2>Active Bets for {team.name}</h2>
+                            <div style={BetListStyle}>
+                                <h2>Active Bets for {team.name}</h2>
+                            </div>
                             {bets && bets.map((bet) => {
-                                // console.log(bet.userProfileId);
                                 if (currentUser == bet.userProfileId) {
                                     return (
                                         <Table striped bordered hover>
@@ -66,18 +71,21 @@ const BetList = () => {
                                             </Link >
                                             </tbody >
                                         </Table >
+
                                     )
                                 } else {
                                     return (
-                                        <input type="hidden"></input>
+                                        <div style={BetListStyle}>
+                                            <input type="hidden"></input>
+                                        </div>
                                     )
                                 }
                             })}
-                            <Button block className="cancelEdit" type="button" color="danger" isLoading={isLoading}
-                                onClick={() => history.goBack()}>
-                                {'Go Back'}
+                            <Button color="danger" isLoading={isLoading}
+                                href="/teams">
+                                {'Back to Teams'}
                             </Button>
-                        </div >
+                        </div>
                     </div >
                 </div >
             }

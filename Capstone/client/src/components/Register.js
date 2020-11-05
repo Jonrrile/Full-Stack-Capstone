@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, Jumbotron, Container } from 'reactstrap';
 import { useHistory } from "react-router-dom";
 import { UserProfileContext } from "../providers/UserProfileProvider";
 
@@ -18,13 +18,14 @@ export default function Register() {
         } else {
             const userProfile = { name, email };
             register(userProfile, password)
-                .then(() => history.push("/teams"));
+                .then(() => history.push("/matchups"));
         }
     };
 
     return (
-        <Form onSubmit={registerClick}>
-            <fieldset>
+        <div>
+            <Jumbotron className="jumbotron"><h1><i>BetOnIt!</i></h1></Jumbotron>
+            <Form onSubmit={registerClick}>
                 <FormGroup>
                     <Label htmlFor="name">Name</Label>
                     <Input id="name" type="text" onChange={e => setName(e.target.value)} />
@@ -44,7 +45,7 @@ export default function Register() {
                 <FormGroup>
                     <Button>Register</Button>
                 </FormGroup>
-            </fieldset>
-        </Form>
+            </Form>
+        </div>
     );
 }
